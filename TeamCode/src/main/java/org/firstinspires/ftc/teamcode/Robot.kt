@@ -31,8 +31,6 @@ class Robot {
     private val liftRightMotor = KMotorEx("liftRight", OpenLoopController())
 
     val drive = Drive(flMotor, blMotor, frMotor, brMotor)
-    @JvmField
-    val intake = Intake(intakeMotor, IntakeConfig(1.0, 0.0, -1.0))
-    @JvmField
+    val intake = Intake(intakeMotor, IntakeConfig(1.0))
     val lift = Lift(liftLeftMotor, liftRightMotor)
 }

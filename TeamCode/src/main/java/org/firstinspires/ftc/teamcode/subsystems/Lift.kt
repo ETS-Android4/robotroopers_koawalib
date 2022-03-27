@@ -11,4 +11,9 @@ class Lift(private val leftMotor: KMotorEx, private val rightMotor: KMotorEx) : 
 
     val isAtPosition: Boolean
         get() = leftMotor.isAtTarget()
+
+    override fun periodic() {
+        leftMotor.update()
+        rightMotor.update()
+    }
 }
