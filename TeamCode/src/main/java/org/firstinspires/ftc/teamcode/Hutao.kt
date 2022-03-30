@@ -12,16 +12,16 @@ import com.asiankoala.koawalib.subsystem.odometry.TwoWheelOdometry
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder
 
 class Hutao {
-    private val fl = KMotor("FL").brake
-    private val bl = KMotor("BL").brake
-    private val fr = KMotor("FR").brake.reverse
-    private val br = KMotor("BR").brake.reverse
+    private val fl = KMotor("FL").brake.reverse
+    private val bl = KMotor("BL").brake.reverse
+    private val fr = KMotor("FR").brake
+    private val br = KMotor("BR").brake
 
-    private val odoLeft = bl.zero()
-    private val odoAux = br.zero()
+    private val odoLeft = bl.zero().reverseEncoder
+    private val odoAux = br.zero().reverseEncoder
     val imu = KIMU("imu", AxesOrder.XYZ, AxesSigns.NPN)
 
     val drive = KMecanumOdoDrive(fl, bl, fr, br, TwoWheelOdometry(OdoConfig(
             1892.3724, 1.857, 1.0, odoLeft, odoLeft, odoAux
-    ), imu), true)
+    ), imu), false)
 }
